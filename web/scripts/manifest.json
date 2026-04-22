@@ -1,0 +1,5 @@
+{
+  "scripts": [
+    { "file": "hello-world.user.js" }
+  ]
+}

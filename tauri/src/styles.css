@@ -1,0 +1,1 @@
+body{margin:0;font-family:sans-serif}.layout{display:grid;grid-template-columns:320px 1fr;height:100vh}aside,main{padding:8px}main{display:grid;grid-template-rows:auto 180px 1fr 180px;gap:8px}textarea,iframe,pre,select,input,button{width:100%}pre{background:#111;color:#eee;overflow:auto}iframe{border:1px solid #ccc}
