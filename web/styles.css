@@ -1,0 +1,1 @@
+body{font-family:system-ui;margin:0}.layout{display:grid;grid-template-columns:340px 1fr;height:100vh}aside,main{padding:8px}main{display:grid;grid-template-rows:auto 220px 1fr 180px;gap:8px}textarea,select,input,button,iframe{width:100%}iframe{border:1px solid #bbb}#console{background:#101010;color:#f2f2f2;overflow:auto;padding:8px}

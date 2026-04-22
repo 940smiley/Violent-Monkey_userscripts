@@ -1,0 +1,21 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Tauri Userscript Runner</title><link rel="stylesheet" href="src/styles.css"></head>
+<body>
+<div class="layout">
+  <aside>
+    <h3>Scripts</h3><select id="scriptList" size="10"></select>
+    <button id="discover">Discover plugins</button>
+    <input id="remoteUrl" placeholder="GitHub URL"><button id="fetchRemote">Fetch remote</button>
+    <input type="file" id="localFile" accept=".js,.user.js">
+    <pre id="meta"></pre>
+  </aside>
+  <main>
+    <input id="targetUrl" value="https://example.org"><button id="load">Load URL</button><button id="run">Run Script</button>
+    <textarea id="editor"></textarea>
+    <iframe id="preview"></iframe>
+    <pre id="console"></pre>
+  </main>
+</div>
+<script src="../shared-docs/userscript-runtime.js"></script>
+<script type="module" src="src/app.js"></script>
+</body></html>
