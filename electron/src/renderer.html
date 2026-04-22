@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Userscript Runner (Electron)</title>
+    <style>body{font-family:sans-serif;margin:0;display:grid;grid-template-columns:360px 1fr;gap:8px;height:100vh}.left{padding:8px;border-right:1px solid #ccc;overflow:auto}.main{display:grid;grid-template-rows:240px 1fr 200px;gap:8px;padding:8px}.panel{border:1px solid #ddd;padding:8px;overflow:auto}textarea{width:100%;height:160px}iframe{width:100%;height:100%;border:0}button,input,select{margin:4px 0;width:100%}.console{background:#111;color:#eee;font-family:monospace;white-space:pre-wrap;height:180px;overflow:auto}</style>
+  </head>
+  <body>
+    <div class="left">
+      <h3>Scripts</h3>
+      <select id="scriptList" size="10"></select>
+      <button id="discoverBtn">Discover /scripts plugins</button>
+      <button id="pickBtn">Open local .user.js</button>
+      <input id="remoteUrl" placeholder="GitHub raw or GitHub Pages URL" />
+      <button id="fetchRemoteBtn">Fetch remote script</button>
+      <h4>Metadata</h4>
+      <div id="metaView"></div>
+      <button id="exportJson">Export JSON</button>
+      <button id="exportCsv">Export CSV</button>
+      <button id="exportTxt">Export TXT</button>
+    </div>
+    <div class="main">
+      <div class="panel">
+        <input id="targetUrl" placeholder="Target page URL" value="https://example.org" />
+        <button id="loadTargetBtn">Load target page</button>
+        <button id="runBtn">Run Script</button>
+        <textarea id="editor"></textarea>
+      </div>
+      <div class="panel"><iframe id="preview"></iframe></div>
+      <div class="panel console" id="console"></div>
+    </div>
+    <script src="../../shared-docs/userscript-runtime.js"></script>
+    <script src="./renderer.js"></script>
+  </body>
+</html>

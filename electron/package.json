@@ -1,0 +1,15 @@
+{
+  "name": "userscript-runner-electron",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win portable",
+    "lint": "echo 'Add lint config as needed'"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  }
+}

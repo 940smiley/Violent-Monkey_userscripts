@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Userscript Runner (Web)</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="layout">
+  <aside>
+    <h2>Scripts</h2>
+    <select id="scriptList" size="10"></select>
+    <button id="discoverBtn">Discover /scripts manifest</button>
+    <input id="remoteUrl" placeholder="GitHub raw / pages URL" />
+    <button id="fetchBtn">Fetch URL</button>
+    <input id="localFile" type="file" accept=".js,.user.js" />
+    <h3>Metadata</h3>
+    <pre id="metaView"></pre>
+    <button data-export="json">Export JSON</button>
+    <button data-export="csv">Export CSV</button>
+    <button data-export="txt">Export TXT</button>
+  </aside>
+  <main>
+    <div class="toolbar">
+      <input id="targetUrl" value="sample-target.html" />
+      <button id="loadBtn">Load Target</button>
+      <button id="runBtn">Run Script</button>
+    </div>
+    <textarea id="editor" spellcheck="false"></textarea>
+    <iframe id="preview" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+    <pre id="console"></pre>
+  </main>
+</div>
+<script src="../shared-docs/userscript-runtime.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
