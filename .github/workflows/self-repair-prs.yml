@@ -1,0 +1,50 @@
+name: Self Repair PR Checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  lint-and-fix:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Basic syntax checks
+        run: |
+          python -m py_compile tools/classify_scripts.py tools/userscript_tool.py
+          python tools/classify_scripts.py
+
+      - name: Auto-fix generated index
+        run: |
+          if [[ -n "$(git status --porcelain scripts-index.json)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add scripts-index.json
+            git commit -m "chore(ci): self-repair scripts index"
+            git push origin HEAD:refs/heads/${{ github.head_ref }}
+          fi
+
+  automerge:
+    needs: lint-and-fix
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+
+    steps:
+      - name: Enable auto-merge for passing PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr merge ${{ github.event.pull_request.number }} --auto --squash || true

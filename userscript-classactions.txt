@@ -1,0 +1,57 @@
+// ==UserScript== // @name         ClassAction Settlements Scraper // @namespace    http://tampermonkey.net/ // @version      1.0 // @description  Scrape settlements from multiple class action settlement sites with pagination and export functionality. // @author       Joshua // @match        :///* // @grant        GM_setValue // @grant        GM_getValue // @grant        GM_registerMenuCommand // @grant        GM_download // @run-at       document-end // ==/UserScript==
+
+(function() { 'use strict';
+
+// Default URLs to scan
+const defaultUrls = [
+    'https://www.classaction.org/',
+    'https://www.claimdepot.com/',
+    'https://www.openclassactions.com/',
+    'https://www.classaction.com/'
+];
+
+// Load or initialize URLs to scan
+let scanUrls = GM_getValue('scanUrls', defaultUrls);
+
+// Register menu command to add URLs
+GM_registerMenuCommand('Add URL to Scan List', () => {
+    const newUrl = prompt('Enter a new URL to scan for settlements:');
+    if (newUrl) {
+        if (!scanUrls.includes(newUrl)) {
+            scanUrls.push(newUrl);
+            GM_setValue('scanUrls', scanUrls);
+            alert('URL added to scan list. Reload the page to apply.');
+        } else {
+            alert('URL already in scan list.');
+        }
+    }
+});
+
+// Register menu command to view current URLs
+GM_registerMenuCommand('View Scan URLs', () => {
+    alert('Current URLs to scan:
+
+' + scanUrls.join(' ')); });
+
+// Main scraping logic placeholder
+// For demonstration, we will just log the URLs to scan
+console.log('Scanning the following URLs for settlements:');
+scanUrls.forEach(url => console.log(url));
+
+// TODO: Implement scraping logic for each site
+// This will include site-specific selectors, pagination handling, data extraction, and export
+
+// Example: ClaimDepot scraping logic (simplified)
+if (window.location.hostname.includes('claimdepot.com')) {
+    // Insert ClaimDepot scraping code here
+    console.log('Running ClaimDepot scraper...');
+    // ...
+}
+
+// Similarly, add scraping logic for other sites
+
+})();
+
+/* Full script for ClaimDepot scraper from previous work can be integrated here, with modular functions for each site.
+
+This userscript allows adding URLs dynamically via menu commands, with default URLs included. */
