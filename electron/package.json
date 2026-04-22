@@ -9,7 +9,7 @@
     "lint": "echo 'Add lint config as needed'"
   },
   "devDependencies": {
-    "electron": "^31.0.0",
+    "electron": "^41.2.2",
     "electron-builder": "^24.13.3"
   }
 }
