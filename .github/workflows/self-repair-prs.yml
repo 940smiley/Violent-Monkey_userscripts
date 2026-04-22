@@ -12,6 +12,7 @@ jobs:
   lint-and-fix:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v6
         with:
@@ -33,13 +34,14 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add scripts-index.json
             git commit -m "chore(ci): self-repair scripts index"
-            git push
+            git push origin HEAD:refs/heads/${{ github.head_ref }}
           fi
 
   automerge:
     needs: lint-and-fix
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
+
     steps:
       - name: Enable auto-merge for passing PR
         env:
