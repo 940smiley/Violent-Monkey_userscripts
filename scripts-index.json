@@ -1,0 +1,23 @@
+{
+  "generatedAt": "2026-04-22T03:22:40.741242+00:00",
+  "scriptCount": 1,
+  "categories": {
+    "Data Extraction & Scraping": {
+      "DOM Scrapers": [
+        {
+          "path": "scripts/Data-Extraction-Scraping/DOM-Scrapers/classaction-multi-scraper.user.js",
+          "name": "ClassAction Multi Scraper",
+          "version": "1.0.0",
+          "description": "Scrape class action case data from multiple legal settlement sites and export JSON/CSV.",
+          "matches": [
+            "*://*.classaction.org/*",
+            "*://*.claimdepot.com/*",
+            "*://*.openclassactions.com/*",
+            "*://*.classaction.com/*"
+          ],
+          "classification_source": "metadata"
+        }
+      ]
+    }
+  }
+}
