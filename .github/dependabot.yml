@@ -1,9 +1,31 @@
 version: 2
 updates:
-  - package-ecosystem: github-actions
-    directory: '/'
+  - package-ecosystem: "npm"
+    directory: "/electron"
     schedule:
-      interval: weekly
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    groups:
+      minor-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
     labels:
-      - dependencies
-      - security
+      - "dependencies"
+    commit-message:
+      prefix: "deps"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    groups:
+      actions:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+    labels:
+      - "dependencies"
+    commit-message:
+      prefix: "deps"
